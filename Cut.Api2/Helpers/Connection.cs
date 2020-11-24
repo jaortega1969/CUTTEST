@@ -27,8 +27,10 @@ namespace Cut.Api2.Helpers
                     CommandType = CommandType.StoredProcedure
                 };
                 cmd.Parameters.Add("@int_deposito", SqlDbType.Int).Value = id;
-                SqlDataAdapter MyDataAdapter = new SqlDataAdapter();
-                MyDataAdapter.SelectCommand = cmd;
+                SqlDataAdapter MyDataAdapter = new SqlDataAdapter
+                {
+                    SelectCommand = cmd
+                };
                 MyDataAdapter.Fill(ds, "BOLETA");
                 cmd.Dispose();
                 cnx.Close();
